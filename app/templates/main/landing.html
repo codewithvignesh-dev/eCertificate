@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}{{ company_name }} | eCertificate Platform{% endblock %}
+
+{% block content %}
+<div class="ec-landing">
+
+<section class="ec-hero">
+    <div class="ec-grid-bg"></div>
+    <div class="ec-orb a"></div>
+    <div class="ec-orb b"></div>
+    
+    <div class="ec-container ec-hero-inner">
+        <div class="ec-animate">
+            <div class="ec-eyebrow">
+                <span class="ec-dot"></span> Digital recognition, built for modern organizations.
+            </div>
+            
+            <h1 class="ec-title">
+                Create, manage & share <span>eCertificates</span> at scale.
+            </h1>
+            
+            <p class="ec-lead">
+                Turn spreadsheets into polished, verifiable digital certificates in minutes. {{ company_name }} gives colleges, teams and organizations a faster way to create, publish and manage recognition at scale.
+            </p>
+            
+            <div class="ec-actions">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('dashboard.index') }}" class="ec-btn ec-primary">
+                        Open Dashboard <span>→</span>
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('auth.signin') }}" class="ec-btn ec-primary">
+                        Sign In
+                    </a>
+                    <a href="{{ url_for('auth.signup') }}" class="ec-btn ec-secondary">
+                        Get Started <span>→</span>
+                    </a>
+                {% endif %}
+            </div>
+
+            <div class="ec-trust">
+                <span><b>01</b> Excel / CSV import</span>
+                <span><b>02</b> Personalized PDFs</span>
+                <span><b>03</b> Secure public links</span>
+            </div>
+        </div>
+
+        <div class="ec-dashboard ec-animate ec-delay">
+            <div class="ec-window">
+                <div class="ec-windowbar">
+                    <i></i><i></i><i></i>
+                </div>
+                <div class="ec-dash">
+                    <div class="ec-dash-head">
+                        <div>
+                            <div class="ec-mini-title">eCertificate System</div>
+                            <div class="ec-mini-sub">Platform Overview</div>
+                        </div>
+                        <div class="ec-pill">SECURE</div>
+                    </div>
+                    
+                    <div class="ec-stats">
+                        <div class="ec-stat">
+                            <small>Bulk Generation</small>
+                            <b>Excel / CSV</b>
+                        </div>
+                        <div class="ec-stat">
+                            <small>Output Format</small>
+                            <b>PDF Document</b>
+                        </div>
+                        <div class="ec-stat">
+                            <small>Public Access</small>
+                            <b>Secure Links</b>
+                        </div>
+                        <div class="ec-stat">
+                            <small>Management</small>
+                            <b>Analytics</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ec-section" id="features">
+    <div class="ec-container">
+        <div class="ec-center">
+            <div class="ec-kicker">Built for organizations</div>
+            <h2 class="ec-h2">Everything needed to manage digital certificates.</h2>
+            <p class="ec-p">Streamline your institutional certification workflow with speed, reliability, and precision.</p>
+        </div>
+
+        <div class="ec-features">
+            <div class="ec-card">
+                <div class="ec-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M12 4v11m0-11-4 4m4-4 4 4"/><path stroke-linecap="round" d="M5 14v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3"/></svg>
+                </div>
+                <h3>Bulk Generation</h3>
+                <p>Upload recipient information through Excel or CSV and generate certificates efficiently.</p>
+            </div>
+
+            <div class="ec-card">
+                <div class="ec-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3.5 19 6v5.5c0 4.3-2.9 7.7-7 9-4.1-1.3-7-4.7-7-9V6l7-2.5Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <h3>Secure Verification</h3>
+                <p>Every generated certificate receives a unique public token for secure online access.</p>
+            </div>
+
+            <div class="ec-card">
+                <div class="ec-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+                </div>
+                <h3>Centralized Management</h3>
+                <p>Track certificates, colleges, batches and generation activity from one dashboard.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ec-section alt">
+    <div class="ec-container">
+        <div class="ec-center">
+            <div class="ec-kicker">Simple workflow</div>
+            <h2 class="ec-h2">Four steps. Zero unnecessary complexity.</h2>
+            <p class="ec-p">Move from a list of recipients to shareable digital certificates through a clear, predictable process.</p>
+        </div>
+
+        <div class="ec-process">
+            <div class="ec-step">
+                <div class="ec-num">01</div>
+                <h3>Upload data</h3>
+                <p>Bring your recipient information into the platform using your existing spreadsheet data.</p>
+            </div>
+            <div class="ec-step">
+                <div class="ec-num">02</div>
+                <h3>Define details</h3>
+                <p>Set the certificate title and description with personalized recipient placeholders.</p>
+            </div>
+            <div class="ec-step">
+                <div class="ec-num">03</div>
+                <h3>Generate</h3>
+                <p>Create individual certificate documents for the recipients in your dataset.</p>
+            </div>
+            <div class="ec-step">
+                <div class="ec-num">04</div>
+                <h3>Publish & share</h3>
+                <p>Each certificate gets a dedicated public experience that can be viewed or downloaded.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ec-section">
+    <div class="ec-container">
+        <div class="ec-banner">
+            <h2>Make every achievement feel official.</h2>
+            <p>Replace repetitive certificate preparation with a cleaner digital workflow designed to help your organization create and share recognition faster.</p>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('certificates.generate') }}" class="ec-btn ec-white">Start creating certificates <span>→</span></a>
+            {% else %}
+                <a href="{{ url_for('auth.signup') }}" class="ec-btn ec-white">Start creating certificates <span>→</span></a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+<nav class="app-navbar sticky top-0 z-50">
+    <div class="mx-auto flex min-h-[4.5rem] w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <div class="flex min-w-0 shrink items-center gap-3">
+            {% if current_user.is_authenticated %}
+            <button type="button" data-sidebar-toggle class="icon-button shrink-0" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            {% endif %}
+
+            <a href="{{ url_for('dashboard.index') if current_user.is_authenticated else url_for('main.landing') }}" class="brand-mark min-w-0 shrink">
+                <span class="brand-icon shrink-0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 3.5h7.5L19 8v12.5H7A2.5 2.5 0 0 1 4.5 18V6A2.5 2.5 0 0 1 7 3.5Z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 3.5V8h5M8.5 12h6M8.5 15.5h6"/>
+                    </svg>
+                </span>
+                <span class="brand-text truncate">eCertificate</span>
+            </a>
+        </div>
+
+        <div class="flex min-w-0 shrink-0 items-center justify-end gap-2 sm:gap-3">
+            {% if current_user.is_authenticated %}
+
+            <div class="hidden min-w-0 text-right md:block">
+                <p class="max-w-[10rem] truncate text-sm font-semibold text-slate-900">
+                    {{ current_user.name }}
+                </p>
+                <p class="text-xs capitalize text-slate-500">
+                    {{ current_user.role }}
+                </p>
+            </div>
+
+            {% if request.path == '/' %}
+            <a href="{{ url_for('dashboard.index') }}" class="nav-cta shrink-0">
+                <span class="hidden sm:inline">Open Dashboard</span>
+                <span class="sm:hidden">Dashboard</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+            </a>
+            {% endif %}
+
+            <a href="{{ url_for('profile.index') }}" class="profile-avatar shrink-0" aria-label="Profile">
+                {{ current_user.name[:1]|upper }}
+            </a>
+
+            {% else %}
+
+            <a href="{{ url_for('auth.signin') }}" class="nav-link shrink-0">
+                Sign In
+            </a>
+
+            <a href="{{ url_for('auth.signup') }}" class="nav-cta shrink-0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/>
+                </svg>
+                <span class="hidden xs:inline">Get Started</span>
+                <span class="xs:hidden">Start</span>
+            </a>
+
+            {% endif %}
+        </div>
+    </div>
+</nav>

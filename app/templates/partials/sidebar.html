@@ -1,0 +1,59 @@
+<aside data-sidebar class="sidebar fixed inset-y-0 left-0 z-50 w-64">
+    <div class="sidebar-head">
+        <a href="{{ url_for('dashboard.index') }}" class="brand-mark min-w-0">
+            <span class="brand-icon shrink-0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 3.5h7.5L19 8v12.5H7A2.5 2.5 0 0 1 4.5 18V6A2.5 2.5 0 0 1 7 3.5Z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 3.5V8h5M8.5 12h6M8.5 15.5h6"/>
+                </svg>
+            </span>
+            <span class="brand-text truncate">eCertificate</span>
+        </a>
+
+        <button type="button" data-sidebar-close class="icon-button shrink-0" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 6 12 12M18 6 6 18"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="flex h-[calc(100vh-4.5rem)] flex-col overflow-y-auto px-3 py-5">
+        <div class="sidebar-label">Workspace</div>
+
+        <nav class="space-y-1.5">
+            <a href="{{ url_for('dashboard.index') }}" class="sidebar-link">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('certificates.generate') }}" class="sidebar-link">
+                <span>Generate eCertificate</span>
+            </a>
+
+            {% if current_user.is_authenticated and (current_user.is_manager or current_user.is_admin) %}
+            <a href="{{ url_for('colleges.index') }}" class="sidebar-link">
+                <span>Colleges</span>
+            </a>
+            {% endif %}
+
+            {% if current_user.is_authenticated and current_user.is_admin %}
+            <a href="{{ url_for('users.index') }}" class="sidebar-link">
+                <span>User Management</span>
+            </a>
+            {% endif %}
+        </nav>
+
+        <div class="mt-auto border-t border-slate-200/70 pt-5">
+            <div class="sidebar-label">Account</div>
+
+            <a href="{{ url_for('profile.index') }}" class="sidebar-link">
+                <span>Profile</span>
+            </a>
+
+            <a href="{{ url_for('auth.signout') }}" class="sidebar-link sidebar-link-danger mt-1">
+                <span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+</aside>
+
+<div data-sidebar-overlay class="sidebar-overlay fixed inset-0 z-40"></div>

@@ -1,0 +1,12 @@
+{
+  "name": "litz-tech-ecertificate-frontend",
+  "private": true,
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./tailwind/input.css -o ./app/static/css/app.css --minify",
+    "watch:css": "npx @tailwindcss/cli -i ./tailwind/input.css -o ./app/static/css/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.3.3",
+    "@tailwindcss/cli": "^4.3.3"
+  }
+}
